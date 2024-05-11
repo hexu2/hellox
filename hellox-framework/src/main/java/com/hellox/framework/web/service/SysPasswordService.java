@@ -24,11 +24,16 @@ public class SysPasswordService
     @Autowired
     private RedisCache redisCache;
 
+    @Value(value = "${user.password.enabled}")
+    private boolean enabled;
+
     @Value(value = "${user.password.maxRetryCount}")
     private int maxRetryCount;
 
     @Value(value = "${user.password.lockTime}")
     private int lockTime;
+
+
 
     /**
      * 登录账户密码错误次数缓存键名
@@ -54,21 +59,24 @@ public class SysPasswordService
             retryCount = 0;
         }
 
-        if (retryCount >= Integer.valueOf(maxRetryCount).intValue())
-        {
-            throw new UserPasswordRetryLimitExceedException(maxRetryCount, lockTime);
+        if(Boolean.valueOf(enabled).booleanValue()){
+            if (retryCount >= Integer.valueOf(maxRetryCount).intValue())
+            {
+                throw new UserPasswordRetryLimitExceedException(maxRetryCount, lockTime);
+            }
+
+            if (!matches(user, password))
+            {
+                retryCount = retryCount + 1;
+                redisCache.setCacheObject(getCacheKey(username), retryCount, lockTime, TimeUnit.MINUTES);
+                throw new UserPasswordNotMatchException();
+            }
+            else
+            {
+                clearLoginRecordCache(username);
+            }
         }
 
-        if (!matches(user, password))
-        {
-            retryCount = retryCount + 1;
-            redisCache.setCacheObject(getCacheKey(username), retryCount, lockTime, TimeUnit.MINUTES);
-            throw new UserPasswordNotMatchException();
-        }
-        else
-        {
-            clearLoginRecordCache(username);
-        }
     }
 
     public boolean matches(SysUser user, String rawPassword)

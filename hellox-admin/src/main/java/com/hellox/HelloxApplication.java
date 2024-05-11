@@ -14,7 +14,7 @@ public class HelloxApplication
 {
     public static void main(String[] args)
     {
-        // System.setProperty("spring.devtools.restart.enabled", "false");
+        System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(HelloxApplication.class, args);
         //Application startup banner
         System.out.println(
