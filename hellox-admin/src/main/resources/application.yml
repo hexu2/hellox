@@ -15,7 +15,7 @@ hellox:
 
 # 开发环境配置
 server:
-  # 服务器的HTTP端口，默认为8080
+  # 服务器的HTTP端口，默认为 8080
   port: 8080
   servlet:
     # 应用的访问路径
@@ -40,7 +40,8 @@ logging:
 # 用户配置
 user:
   password:
-    enabled: true
+    # true 开启 false 关闭
+    enabled: false
     # 密码最大错误次数
     maxRetryCount: 6
     # 密码锁定时间（默认10分钟）
