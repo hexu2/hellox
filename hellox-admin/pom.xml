@@ -61,6 +61,12 @@
             <artifactId>hellox-generator</artifactId>
         </dependency>
 
+        <!-- flowable -->
+        <dependency>
+            <groupId>com.hellox</groupId>
+            <artifactId>hellox-flowable</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
