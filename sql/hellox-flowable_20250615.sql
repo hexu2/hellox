@@ -3125,8 +3125,8 @@ CREATE TABLE `sys_listener` (
 -- Records of sys_listener
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_listener` (`id`, `name`, `type`, `event_type`, `value_type`, `value`, `create_time`, `update_time`, `create_by`, `update_by`, `status`, `remark`) VALUES (1, '任务监听', '1', 'assignment', '1', 'com.ruoyi.flowable.listener.FlowTaskListener', '2022-12-25 12:31:50', NULL, NULL, NULL, 0, NULL);
-INSERT INTO `sys_listener` (`id`, `name`, `type`, `event_type`, `value_type`, `value`, `create_time`, `update_time`, `create_by`, `update_by`, `status`, `remark`) VALUES (2, '执行监听', '2', 'start', '1', 'com.ruoyi.flowable.listener.FlowExecutionListener', '2022-12-25 12:41:10', NULL, NULL, NULL, 0, NULL);
+INSERT INTO `sys_listener` (`id`, `name`, `type`, `event_type`, `value_type`, `value`, `create_time`, `update_time`, `create_by`, `update_by`, `status`, `remark`) VALUES (1, '任务监听', '1', 'assignment', '1', 'com.hellox.flowable.listener.FlowTaskListener', '2022-12-25 12:31:50', NULL, NULL, NULL, 0, NULL);
+INSERT INTO `sys_listener` (`id`, `name`, `type`, `event_type`, `value_type`, `value`, `create_time`, `update_time`, `create_by`, `update_by`, `status`, `remark`) VALUES (2, '执行监听', '2', 'start', '1', 'com.hellox.flowable.listener.FlowExecutionListener', '2022-12-25 12:41:10', NULL, NULL, NULL, 0, NULL);
 COMMIT;
 
 -- ----------------------------
